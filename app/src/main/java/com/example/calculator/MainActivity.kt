@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         const val MINUS = "-"
         const val MULTIPLY = "*"
         const val DIVIDE = "/"
+
     }
 
     private lateinit var firstValueEditText: EditText
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var divideSign: TextView
     private lateinit var equalSign: TextView
     private lateinit var dotSign: TextView
+    private lateinit var multiplySiqn: TextView
 
     private lateinit var zeroDigit: TextView
     private lateinit var oneDigit: TextView
@@ -40,6 +42,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fourDigit: TextView
     private lateinit var fiveDigit: TextView
     private lateinit var sixDigit: TextView
+    private lateinit var sevenDigit: TextView
+    private lateinit var eightDigit: TextView
+    private lateinit var nineDigit: TextView
 
     private lateinit var signTextView: TextView
 
@@ -99,6 +104,8 @@ class MainActivity : AppCompatActivity() {
         divideSign = findViewById(R.id.divideTextView)
         equalSign = findViewById(R.id.equalSign)
         dotSign = findViewById(R.id.dotSign)
+        multiplySiqn = findViewById(R.id.multiplyTextView)
+
 
         /**
          *  Инициализация цифер
@@ -111,6 +118,9 @@ class MainActivity : AppCompatActivity() {
         fiveDigit = findViewById(R.id.fiveTextView)
         sixDigit = findViewById(R.id.sixTextView)
         zeroDigit = findViewById(R.id.zeroTextView)
+        sevenDigit = findViewById(R.id.sevenTextView)
+        eightDigit = findViewById(R.id.eightTextView)
+        nineDigit = findViewById(R.id.nineTextView)
 
         clearTextView = findViewById(R.id.claerTextView)
 
@@ -187,6 +197,33 @@ class MainActivity : AppCompatActivity() {
                 secondValueEditText.setText(secondValue)
             }
         }
+        sevenDigit.setOnClickListener {
+            if (firstValueEditText.isFocused) {
+                firstValue += sevenDigit.text.toString()
+                firstValueEditText.setText(firstValue)
+            } else if (secondValueEditText.isFocused) {
+                secondValue += sevenDigit.text.toString()
+                secondValueEditText.setText(secondValue)
+            }
+        }
+        eightDigit.setOnClickListener {
+            if (firstValueEditText.isFocused) {
+                firstValue += eightDigit.text.toString()
+                firstValueEditText.setText(firstValue)
+            } else if (secondValueEditText.isFocused) {
+                secondValue += eightDigit.text.toString()
+                secondValueEditText.setText(secondValue)
+            }
+        }
+        nineDigit.setOnClickListener {
+            if (firstValueEditText.isFocused) {
+                firstValue += nineDigit.text.toString()
+                firstValueEditText.setText(firstValue)
+            } else if (secondValueEditText.isFocused) {
+                secondValue += nineDigit.text.toString()
+                secondValueEditText.setText(secondValue)
+            }
+        }
     }
 
     /**
@@ -219,6 +256,12 @@ class MainActivity : AppCompatActivity() {
         }
         clearTextView.setOnClickListener {
             clearAll()
+        }
+        multiplySiqn.setOnClickListener {
+            selectedOperation = multiplySiqn.text.toString()
+            signTextView.text = selectedOperation
+
+            changeFocus()
         }
     }
 
